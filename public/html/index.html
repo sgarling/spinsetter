@@ -1,0 +1,71 @@
+<!doctype html>
+<html ng-app="ddPlayer">
+<head>
+    <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/jquery.imagesloaded.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/angular-ui.min.js"></script>
+    <script type="text/javascript" src="js/angular-ui-sortable.js"></script>
+    <script type="text/javascript" src="js/underscore.js"></script>
+    <script type="text/javascript" src="js/underscore.observable.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/c-player.js"></script>
+    <script type="text/javascript" src="js/c-pageview.js"></script>
+    <script type="text/javascript" src="js/c-playerService.js"></script>
+    <script type="text/javascript" src="js/c-profileInfo.js"></script>
+    <script type="text/javascript" src="js/c-loggedUser.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.1.js"></script>
+    <script type="text/javascript" src="js/c-stream.js"></script>
+    <script type="text/javascript" src="js/c-likes.js"></script>
+    <script type="text/javascript" src="js/c-nav.js"></script>
+    <script type="text/javascript" src="js/c-createAccount.js"></script>
+    <script type="text/javascript" src="js/c-login.js"></script>
+    <script type="text/javascript" src="js/d-ssIsoItem.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <div class="nav-bar" ng-controller="NavCtrl">
+                <div class="logo"></div>
+                <div class="following-btn"><div class="following-btn-txt">Following</div></div>
+                <div class="blogs-btn"><div class="blogs-btn-txt">Blogs</div></div>
+                <div class="genres-btn"><div class="genres-btn-txt">Genres</div></div>
+                <div class="popular-btn"><div class="popular-btn-txt">Popular</div></div>
+                <div class="search-input" ng-mouseenter="showSearch()" ng-mouseleave="hideSearch()"><input type="text" placeholder="Search" ng-model="searchInput"></div>
+                <div class="search-btn" ng-mouseenter="showSearch()" ng-mouseleave="hideSearch()"></div>
+                <div class="nav-bar-ctrls" ng-controller="PlayerCtrl">
+                    <div class="rwd-btn" ng-click="skipBack()"></div>
+                    <div class="play-btn" ng-click="play()"></div>
+                    <div class="ffwd-btn" ng-click="skipFwd()"></div>
+                    <div class="dropdown-ctrls">
+                        <div class="song-title">
+                            <marquee behavior="scroll" direction="left" scrollAmount="2">{{currentTrack.user.username + ' - ' + currentTrack.title}}</marquee></div>
+                        <div class="progress-section">
+                            <div class="song-progress-wrapper">
+                                <div class="progress-bar"></div>
+                                <div class="song-progress"></div>
+                            </div>
+                        </div>
+                        <div class="like-btn" ng-click="like()"></div>
+                    </div>
+                </div>
+                <div class="calendar-btn">
+                    <div class="notification-circle calendar"><p>3</p></div>
+                </div>
+                <div class="profile-btn" ng-click="goToCreateAccountPage()">
+                    <div class="notification-circle profile"><p>4</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="content-container" ng-controller="PageViewCtrl">
+	        <div class="view-container" ng-view></div>
+        </div>
+    </div>
+</body>
+</html>
